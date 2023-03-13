@@ -13,6 +13,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.3",
+    "express": "^4.18.2",
     "install": "^0.13.0",
     "npm": "^9.5.1",
     "react": "^18.2.0",
@@ -24,9 +25,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "debug": "react-scripts start",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,6 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://briefipz193zms.azurewebsites.net/"
+  }
 }

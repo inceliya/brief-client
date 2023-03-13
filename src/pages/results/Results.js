@@ -36,11 +36,17 @@ function Results() {
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        setAnswers((await results()).data)
-      } catch {
-        navigate('/login')
-      }
+      await results()
+        .then(res => {
+          if (res.status === 200)
+            setAnswers(res.data);
+          else
+          navigate('/login');
+        })
+        .catch(err => {
+          console.log(err);
+          navigate('/login');
+        });
     }
     fetchData();
   }, [navigate]);
@@ -91,13 +97,12 @@ function Results() {
 
   return (
     <div style={{ height: 500, width: '100%' }}>
-      {console.log(answers)}
       <DataGrid
         apiRef={apiRef}
         rows={answers}
         columns={columns.current}
         pageSize={10}
-        getRowId={(row) => row._id}
+        getRowId={row => row._id}
         getRowHeight={() => 'auto'}
         disableRowSelectionOnClick={true}
         sx={{
@@ -113,7 +118,7 @@ function Results() {
           <h2>Budget: </h2>
           <p>{currentAnswer.budget}</p>
           <h2>Deadline: </h2>
-          <p>{(new Date(currentAnswer.deadline)).toLocaleString('uk-UA',{ year: 'numeric', month: 'numeric', day: 'numeric' })}</p>
+          <p>{(new Date(currentAnswer.deadline)).toLocaleString('uk-UA', { year: 'numeric', month: 'numeric', day: 'numeric' })}</p>
           <h2>Target audience: </h2>
           <p>{currentAnswer.targetAudience}</p>
           <h2>Is new project: </h2>
