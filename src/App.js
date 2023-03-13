@@ -1,11 +1,8 @@
-import { BrowserRouter, Route, Routes, Router, createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import { Suspense } from 'react';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Form from './pages/form';
 import Login from './pages/login';
 import Results from './pages/results';
 import { useSelector } from 'react-redux';
-import { store } from './store';
-import { getAccessToken } from './store/actionCreators';
 
 const router = (isLoggedIn) => createBrowserRouter([
   {

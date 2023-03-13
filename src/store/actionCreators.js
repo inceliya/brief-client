@@ -1,7 +1,7 @@
 import { store } from "."
 import { login, refresh } from "../api"
 import { isTokenExpired } from "../utils/jwt"
-import { loadProfileFailure, loadProfileStart, loadProfileSucess, loginFailure, loginStart, loginSucess } from "./loginReducer"
+import { loginFailure, loginStart, loginSucess } from "./loginReducer"
 
 export const loginUser =
     (data) =>

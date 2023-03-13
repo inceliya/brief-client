@@ -1,4 +1,3 @@
-import axios from "axios";
 import Endpoints from "./endpoints";
 import { axiosInstance } from "./instance";
 

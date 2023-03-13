@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
 import {
-  TextField,
   Button,
 } from '@mui/material';
 import { addToFavourite, deleteAnswer, results } from '../../api';
@@ -21,9 +19,9 @@ function Results() {
 
   const columns = useRef([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onFavouriteClick = (row) => {
     return async () => {
-      //row.isFavourite = !row.isFavourite;
       apiRef.current.updateRows([{ _id: row._id, isFavourite: !row.isFavourite }]);
       await addToFavourite({ id: row._id });
     };
@@ -88,7 +86,7 @@ function Results() {
         ),
       },
     ];
-  }, []);
+  }, [onFavouriteClick]);
 
 
   return (

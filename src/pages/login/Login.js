@@ -4,7 +4,6 @@ import {
 import React, { useRef, useState } from 'react';
 import { loginUser } from '../../store/actionCreators';
 import { useAppDispatch } from '../../store';
-import { useSelector } from 'react-redux';
 
 function Login() {
   const dispatch = useAppDispatch();
