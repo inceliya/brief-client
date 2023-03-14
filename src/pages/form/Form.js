@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
+import { sendForm } from '../../api';
 
 function Form() {
   const nameRef = useRef(null);
@@ -35,7 +36,7 @@ function Form() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios.post('/form', { name, email, phone, country, shortDescription, objective, budget, deadline, targetAudience, isNewProject, backgroundInfo })
+    await sendForm({ name, email, phone, country, shortDescription, objective, budget, deadline, targetAudience, isNewProject, backgroundInfo })
       .then(res => setIsSent(true))
       .catch(() => setIsError(true))
   };

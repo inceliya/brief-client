@@ -12,3 +12,5 @@ export const results = () => axiosInstance.get(Endpoints.RESULTS);
 export const addToFavourite = params => axiosInstance.post(Endpoints.ADDTOFAVOURITE, params);
 
 export const deleteAnswer = params => axiosInstance.post(Endpoints.DELETEANSWER, params);
+
+export const sendForm = params => axiosInstance.post(Endpoints.FORM, params);

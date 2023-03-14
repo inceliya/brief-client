@@ -3,9 +3,11 @@ import { store } from "../store";
 import { getAccessToken } from "../store/actionCreators";
 import Endpoints from "./endpoints";
 
+axios.defaults.withCredentials = true;
 export const axiosInstance = axios.create({ baseURL: 'https://briefipz193zms.azurewebsites.net/' });
+//export const axiosInstance = axios.create({ baseURL: 'http://localhost:2999/' });
 
-const urlsSkipAuth = [Endpoints.LOGIN, Endpoints.REFRESH, Endpoints.LOGOUT]
+const urlsSkipAuth = [Endpoints.LOGIN, Endpoints.REFRESH, Endpoints.LOGOUT, Endpoints.FORM]
 
 axiosInstance.interceptors.request.use(async (config) => {
     console.log(config.url);
