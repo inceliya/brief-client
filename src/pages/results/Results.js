@@ -41,7 +41,7 @@ function Results() {
           if (res.status === 200)
             setAnswers(res.data);
           else
-          navigate('/login');
+            navigate('/login');
         })
         .catch(err => {
           console.log(err);
@@ -57,7 +57,7 @@ function Results() {
       { field: 'email', headerName: 'Email', minWidth: 300 },
       { field: 'phone', headerName: 'Phone', minWidth: 200 },
       { field: 'country', headerName: 'Country', minWidth: 200 },
-      { field: 'shortDescription', headerName: 'Description', minWidth: 300, flex: 1 },
+      { field: 'projectName', headerName: 'Project Name', minWidth: 300, flex: 1 },
       {
         field: 'favourite',
         type: 'actions',
@@ -113,6 +113,18 @@ function Results() {
       />
       {!!currentAnswer &&
         <Box>
+          <h2>Services or products: </h2>
+          <p>{currentAnswer.services}</p>
+          <h2>Different from competition: </h2>
+          <p>{currentAnswer.competition}</p>
+          <h2>Strengths: </h2>
+          <p>{currentAnswer.strengths}</p>
+          <h2>Weaknesses: </h2>
+          <p>{currentAnswer.weaknesses}</p>
+          <h2>Description: </h2>
+          <p>{currentAnswer.shortDescription}</p>
+          <h2>Stakeholders, owner/sponsor: </h2>
+          <p>{currentAnswer.stakeHolders}</p>
           <h2>Objective: </h2>
           <p>{currentAnswer.objective}</p>
           <h2>Budget: </h2>
@@ -123,6 +135,8 @@ function Results() {
           <p>{currentAnswer.targetAudience}</p>
           <h2>Is new project: </h2>
           <p>{currentAnswer.isNewProject ? "Yes" : "No"}</p>
+          <h2>Brand info: </h2>
+          <p>{currentAnswer.brandInfo}</p>
           <h2>Backgorund info: </h2>
           <p>{currentAnswer.backgroundInfo}</p>
         </Box>

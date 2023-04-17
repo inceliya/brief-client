@@ -30,13 +30,21 @@ function Form() {
   const [targetAudience, setTargetAudience] = useState('');
   const [isNewProject, setIsNewProject] = useState(false);
   const [backgroundInfo, setBackgroundInfo] = useState('');
+  const [projectName, setProjectName] = useState('');
+  const [stakeHolders, setStakeHolders] = useState('');
+  const [services, setServices] = useState('');
+  const [competition, setCompetition] = useState('');
+  const [strengths, setStrengths] = useState('');
+  const [weaknesses, setWeaknesses] = useState('');
+  const [brandInfo, setBrandInfo] = useState('');
 
   const [isSent, setIsSent] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await sendForm({ name, email, phone, country, shortDescription, objective, budget, deadline, targetAudience, isNewProject, backgroundInfo })
+    await sendForm({ name, email, phone, country, shortDescription, objective, budget, deadline, targetAudience, isNewProject, backgroundInfo,
+      projectName, stakeHolders, services, competition, strengths, weaknesses, brandInfo})
       .then(res => setIsSent(true))
       .catch(() => setIsError(true))
   };
@@ -83,9 +91,57 @@ function Form() {
           <TextField
             fullWidth
             required
+            label="Project name"
+            value={projectName}
+            onChange={(e) => setProjectName(e.target.value)}
+            margin="normal"
+          />
+          <TextField
+            fullWidth
+            required
             label="Project's Country"
             inputRef={countryRef}
             onChange={() => setCountry(countryRef.current.value)}
+            margin="normal"
+          />
+          <TextField
+            fullWidth
+            required
+            multiline
+            rows={4}
+            label="What services or products do your company produce?"
+            value={services}
+            onChange={(e) => setServices(e.target.value)}
+            margin="normal"
+          />
+          <TextField
+            fullWidth
+            required
+            multiline
+            rows={4}
+            label="How are you different from your competition?"
+            value={competition}
+            onChange={(e) => setCompetition(e.target.value)}
+            margin="normal"
+          />
+          <TextField
+            fullWidth
+            required
+            multiline
+            rows={4}
+            label="Describe your company's strengths"
+            value={strengths}
+            onChange={(e) => setStrengths(e.target.value)}
+            margin="normal"
+          />
+          <TextField
+            fullWidth
+            required
+            multiline
+            rows={4}
+            label="Describe your company's weaknesses"
+            value={weaknesses}
+            onChange={(e) => setWeaknesses(e.target.value)}
             margin="normal"
           />
           <TextField
@@ -108,6 +164,16 @@ function Form() {
             required
             onChange={(e) => setObjective(e.target.value)}
             value={objective}
+            margin="normal"
+          />
+          <TextField
+            fullWidth
+            required
+            multiline
+            rows={4}
+            label="Who are the key stakeholders? Who's the owner/sponsor?"
+            value={stakeHolders}
+            onChange={(e) => setStakeHolders(e.target.value)}
             margin="normal"
           />
           <TextField
@@ -144,6 +210,17 @@ function Form() {
               label="Is new project"
             />
           </FormGroup>
+          <TextField
+            fullWidth
+            required
+            multiline
+            rows={4}
+            placeholder="colour palette, fonts, slogan"
+            label="Brand info"
+            value={brandInfo}
+            onChange={(e) => setBrandInfo(e.target.value)}
+            margin="normal"
+          />
           <TextField
             fullWidth
             multiline
